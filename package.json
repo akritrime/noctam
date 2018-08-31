@@ -1,0 +1,17 @@
+{
+  "name": "noctam",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-sass": "^4.9.3"
+  },
+  "devDependencies": {
+    "cssnano": "^4.1.0"
+  }
+}

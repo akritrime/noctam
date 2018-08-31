@@ -1,0 +1,301 @@
+$black: #000;
+// $black: #262626;
+// $black_lighter: #111111;
+$black_lighter: #262626;
+$red: #FF4136;
+$white: #eeefff;
+// $blue: #0074D9;
+$blue: #73beff;
+
+// $sf: ;
+@import url('https://fonts.googleapis.com/css?family=Reenie+Beanie');
+
+body {
+    margin: 0%;
+    padding: 0%;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    .background {
+        background-image: url("./pics/window-2118232_1920.jpg");
+        background-size: contain;
+        // background-repeat: no-repeat;
+        position: fixed;
+        top: 0;
+        right: 0;
+        margin: 0%;
+        padding: 0%;
+        height: 100vh;
+        width: 100vw;
+        animation: zoom 60s linear infinite alternate;
+        z-index: -1;
+    }
+    .frame {
+        // border: 0.25em solid $red;
+        height: 90%;
+        width: 95%;
+        display: grid;
+        grid-template-rows: 2rem 1fr 2rem;
+        grid-template-areas: "top"
+                             "middle"
+                             "bottom";
+        .bar {
+            height: auto;
+            font-family: Arial, Helvetica, sans-serif;
+            // font-size: 1.2rem;
+            width: 100%;
+
+            p {
+
+                padding: 0.5%;
+                margin: 0;
+            }
+            
+        }
+
+        .top {
+            grid-area: "top";
+
+        }
+        
+        .bottom {
+            grid-area: "bottom";
+            
+            p {
+                text-align: right;
+                // margin-bottom: -0.5%;
+                font-size: 0.8rem;
+                a {
+                    text-decoration: none;
+                }
+            }
+            
+        }
+
+        .middle {
+            grid-area: "bottom";
+            // background: $red;
+            height: 100%;
+            width: 100%;
+            text-align: justify;
+            div {
+                text-align: center;
+                * {
+                    padding: 0;
+                    margin: 0;
+                }
+                #title {
+                    font-family: 'Reenie Beanie', cursive;
+                    font-size: 4rem;
+                }
+                
+                #play {
+                    font-family: Arial, Helvetica, sans-serif;
+                    font-size: 2rem;
+                    // clip-path: inset(0 0 50% 0);
+                    position: relative;
+                    width: 85%;
+                    // cursor: pointer;
+                    
+                    a {
+                        color: inherit;
+                        text-decoration: none;
+
+                        &::before, &::after {
+                            content: '▶️ PLAY';
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                        }
+    
+                        &::before {
+                            left: 2px;
+                            text-shadow: -1px 0 $black_lighter;
+                            clip-path: inset(5% 0 35% 0);
+                            animation: glitch-anim-1 3s infinite linear alternate-reverse;
+                        }
+    
+                        &::after {
+                            left: -2px;
+                            text-shadow: -1px 0 $red;
+                            clip-path: inset(35% 0 5% 0);
+                            animation: glitch-anim-2 3s infinite linear alternate-reverse;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &.column {
+        flex-direction: column
+    }
+}
+
+.text {
+    &__white {
+        color: $white;
+
+        &::selection {
+            background: $white;
+            color: $black;
+        }
+    }
+
+    &__red {
+        color: $red;
+        
+        &::selection {
+            background: $red;
+            color: $white;
+        }
+    }
+
+    &__blue {
+        color: $blue;
+        
+        &::selection {
+            background: $blue;
+            color: $white;
+        }
+    }
+
+    &__black_lighter {
+        color: $black_lighter;
+        
+        &::selection {
+            background: $black_lighter;
+            color: $white;
+        }
+    }
+}
+
+.font{
+    &__normal {
+        font-weight: normal;
+    }
+
+    &__bold {
+        font-weight: bold;
+    }
+
+    &__bolder {
+        font-weight: bolder;
+    }
+    
+    &__lighter {
+        font-weight: lighter;
+    }
+}
+	
+.modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.1);
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+
+    .modal_content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: $blue;
+        color: $black;
+        font-size: 2rem;
+        font-family: 'Reenie Beanie', cursive;
+        padding: 1rem 1.5rem;
+        width: auto;
+        border-radius: 0.5rem;
+    }
+
+    .close {
+        float: right;
+        width: 1.5rem;
+        font-size: 1.5rem;
+        line-height: 1.5rem;
+        text-align: center;
+        font-family: serif;
+        cursor: pointer;
+        border-radius: 0.25rem;
+        background-color: $black_lighter;
+        color: $white;
+    }
+    .close:hover {
+        background-color: $black;
+    }
+}
+
+
+.show-modal {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1.0);
+    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+
+
+
+@keyframes zoom {
+    to {
+        transform: scale(1.5)
+    }
+}
+
+@keyframes glitch-anim-1 {
+    $steps: 10;
+    @for $i from 0 through $steps {
+      #{percentage($i*(1/$steps))} {
+        clip-path: inset(random(100) + % 0 random(100) + % 0);
+      }
+    }
+  }
+
+  @keyframes glitch-anim-2 {
+    $steps: 10;
+    @for $i from 0 through $steps {
+      #{percentage($i*(1/$steps))} {
+        clip-path: inset(random(100) + % 0 random(100) + % 0);
+      }
+    }
+  }
+
+@media only screen and (max-width: 600px) {
+    body {
+        .background {
+            background-image: url("./pics/charles-deluvio-456801-unsplash.mob.jpg");
+        }
+        .frame {
+            height: 95%;
+            width: 90%;
+
+            .middle {
+                #title {
+                    font-size: 3rem;
+                    padding: 0.4%;
+
+                    #subtitle {
+                        font-size: 2.3rem;
+                    }
+                }
+                
+                #play {
+                    font-size: 2rem;
+                }
+            }
+        }
+    }
+}
