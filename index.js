@@ -8,13 +8,18 @@ window.addEventListener("load", () => {
     const play = document.getElementById("play").querySelector("a")
     const close = document.querySelector(".close")
     const title = document.getElementById("title")
-    const lights = document.getElementById("lights")
+    const door = document.getElementById("door")
 
     frame.style.visibility = "visible"
     modal.style.display = "block"
 
 
-    const toggle = () => modal.classList.toggle("show-modal")
+    const toggle = () => {
+        modal.classList.toggle("show-modal")
+        door.play()
+    }
+
+    console.log("Vd82dHVLtfMAP0+kOh2CZQp5rsc=")
     play.addEventListener("click", toggle)
     close.addEventListener("click", toggle)
 
