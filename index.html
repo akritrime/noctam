@@ -17,13 +17,12 @@
     <audio hidden id="door">
         <source src="./door.mp3" type="audio/mp3">
     </audio>
-    <div class="background">
+    <div class="background" style="opacity: 0;">
 
     </div>
     <div class="frame" style="visibility: hidden;">
-        <div class="bar top">
+        <div class="bar top center edges">
             <p class="text__blue font__bolder">SKY NITE <span class="text__white font__lighter">DIGITAL</span></p>
-            <!-- <p class="text__red">REC</p> -->
         </div>
         
         <!-- <p></p> -->
@@ -48,6 +47,10 @@
             <span class="close">&times;</span>
             <h1>Coming Soon</h1>
         </div>
+    </div>
+
+    <div id="click_msg" class="text__white" style="visibility: hidden;">
+        <p>Click anywhere to enable sound</p>
     </div>
 </body>
 </html>
